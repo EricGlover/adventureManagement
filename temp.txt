@@ -1,0 +1,47 @@
+DanceTime
+ sh gtk-osx-build-setup.sh
+#
+# jhbuild bootstrap
+# jhbuild build meta-gtk-osx-bootstrap
+# jhbuild build
+
+/Users/ericglover/.local/bin
+
+sudo ln -s /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk /Developer/SDKs/MacOSX10.6.sdk
+
+try changing custom files in !/.jhbuildrc-custom.
+
+MacOSX10.11.sdk
+
+.jhbuildrc line 180
+was
+	return “MacOSX” + sdk_version + “.sdk”
+
+now 
+
+HoratioFox:Adventure_Management ericglover$ jhbuild build python
+Traceback (most recent call last):
+  File "/Users/ericglover/Source/jhbuild/jhbuild/config.py", line 197, in load
+    execfile(filename, config)
+  File "/Users/ericglover/.jhbuildrc", line 551, in <module>
+    execfile(_userrc)
+  File "/Users/ericglover/.jhbuildrc-custom", line 153, in <module>
+    setup_sdk(target=_target, sdk_version="native", architectures=[_default_arch])
+  File "/Users/ericglover/.jhbuildrc", line 252, in setup_sdk
+    sdkdir = get_sdkdir(make_sdk_name(sdk_version), xcodepath, xcodeversion)
+  File "/Users/ericglover/.jhbuildrc", line 203, in get_sdkdir
+    raise EnvironmentError("%s not found" % sdk_name)
+EnvironmentError: MacOSX10.11.sdk not found
+jhbuild: could not load config file
+HoratioFox:Adventure_Management ericglover$ pushd ~
+~ ~/Desktop/Programming/Adventure_Management
+HoratioFox:~ ericglover$ vim .jhbuildrc
+HoratioFox:~ ericglover$ vim .jhbuildrc
+HoratioFox:~ ericglover$ vim .jhbuildrc
+HoratioFox:~ ericglover$ jhbuild build python
+Required packages:
+  System installed packages which are too old:
+    (none)
+  No matching system package installed:
+    automake 
+jhbuild build: Required system dependencies not installed. Install using the command 'jhbuild sysdeps --install' or to ignore system dependencies use command-line option --nodeps
